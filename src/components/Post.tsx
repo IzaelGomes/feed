@@ -1,14 +1,13 @@
 import styles from "./Post.module.css";
+import { Avatar } from "./avatar";
+import { Comment } from "./comment";
 
 const Post = () => {
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <img
-            className={styles.avatar}
-            src="https://github.com/IzaelGomes.png"
-          />
+          <Avatar src="https://github.com/maykbrito.png" />
           <div className={styles.authorInfor}>
             <strong>Izael Gomes</strong>
             <span>Web Developer</span>
@@ -36,7 +35,17 @@ const Post = () => {
 
       <form className={styles.commentForm}>
         <strong>Deixe seu feedback</strong>
+
+        <textarea placeholder="Deixe um comentário" />
+
+        <footer>
+          <button type="submit">Publicar</button>
+        </footer>
       </form>
+
+      <div className={styles.commentList}>
+        <Comment />
+      </div>
     </article>
   );
 };
