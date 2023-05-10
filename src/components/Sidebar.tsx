@@ -1,6 +1,6 @@
 import styles from "./Sidebar.module.css";
 import { PencilLine } from "@phosphor-icons/react";
-import { Avatar } from "./avatar";
+import { Avatar } from "./Avatar";
 
 const Sidebar = () => {
   return (
