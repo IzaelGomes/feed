@@ -5,14 +5,14 @@ import { useState } from "react";
 
 interface Content {
   content: string;
-  deleteComment(comment: string): void;
+  onDeleteComment(comment: string): void;
 }
 
-const Comment = ({ content, deleteComment }: Content) => {
+const Comment = ({ content, onDeleteComment }: Content) => {
   const [likeCount, setLikeCount] = useState(0);
 
   function handleDeleteComment() {
-    deleteComment(content);
+    onDeleteComment(content);
   }
 
   function handleLikeComment() {

@@ -3,7 +3,7 @@ import { formatDistanceToNow } from "date-fns";
 import ptBr from "date-fns/locale/pt-BR";
 import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 interface Posts {
   author: {
@@ -11,13 +11,13 @@ interface Posts {
     name: string;
     role: string;
   };
-  content: [
-    {
-      type: string;
-      content: string;
-    }
-  ];
+  content: Content[];
   publishedAt: Date;
+}
+
+interface Content {
+  type: string;
+  content: string;
 }
 
 const Post = ({ author, content, publishedAt }: Posts) => {
@@ -37,18 +37,16 @@ const Post = ({ author, content, publishedAt }: Posts) => {
     addSuffix: true,
   });
 
-  function handleCreateNewComment() {
+  function handleCreateNewComment(event: FormEvent) {
     event?.preventDefault();
-
-    const newCommentText = event?.target?.content.value;
 
     setComments([...comments, newCommentText]);
     setNewcommentText("");
   }
 
-  function handleNewCommentChange() {
+  function handleNewCommentChange(event: ChangeEvent<HTMLTextAreaElement>) {
     event?.target?.setCustomValidity("");
-    setNewcommentText(event?.target?.value);
+    setNewcommentText(event.target.value);
   }
 
   function deleteComment(commenttoDelete: string) {
@@ -59,8 +57,8 @@ const Post = ({ author, content, publishedAt }: Posts) => {
     setComments(commentsWithoutDeletedOne);
   }
 
-  function handleNewCommentInvalid() {
-    event?.target?.setCustomValidity("Esse campo é obrigatório!");
+  function handleNewCommentInvalid(event: ChangeEvent<HTMLTextAreaElement>) {
+    event.target.setCustomValidity("Esse campo é obrigatório!");
   }
 
   const isNewCommentEmpty = newCommentText.length === 0;
@@ -122,7 +120,7 @@ const Post = ({ author, content, publishedAt }: Posts) => {
             <Comment
               key={comment}
               content={comment}
-              deleteComment={deleteComment}
+              onDeleteComment={deleteComment}
             />
           );
         })}
