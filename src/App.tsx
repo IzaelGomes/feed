@@ -4,7 +4,7 @@ import styles from "./App.module.css";
 
 import "./global.css";
 import { Sidebar } from "./components/Sidebar";
-import { Paragraph } from "@phosphor-icons/react";
+
 
 const posts = [
   {
@@ -71,6 +71,7 @@ function App() {
           {posts.map((post) => {
             return (
               <Post
+                key={post.id}
                 author={post.author}
                 content={post.content}
                 publishedAt={post.publishedAt}
