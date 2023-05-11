@@ -29,7 +29,7 @@ const Comment = ({ content, onDeleteComment }: Content) => {
             <div className={styles.authorAndTime}>
               <strong>Izael Gomes</strong>
               <time title="11 de maio às 08:13h" dateTime="2022-05-11 08:13:30">
-                Publicado a 1h
+                Publicado a 1h 
               </time>
             </div>
 
