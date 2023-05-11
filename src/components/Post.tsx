@@ -1,5 +1,5 @@
 import styles from "./Post.module.css";
-import { formatDistanceToNow } from "date-fns";
+import { format, formatDistanceToNow } from "date-fns";
 import ptBr from "date-fns/locale/pt-BR";
 import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
@@ -25,12 +25,13 @@ const Post = ({ author, content, publishedAt }: Posts) => {
 
   const [newCommentText, setNewcommentText] = useState("");
 
-  const publishedDateFormatted = new Intl.DateTimeFormat("pt-Br", {
-    day: "2-digit",
-    month: "long",
-    hour: "2-digit",
-    minute: "2-digit",
-  }).format(publishedAt);
+  const publishedDateFormatted = format(
+    publishedAt,
+    "d 'de' LLL 'às' HH:mm'h'",
+    {
+      locale: ptBr,
+    }
+  );
 
   const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
     locale: ptBr,

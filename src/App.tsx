@@ -5,7 +5,6 @@ import styles from "./App.module.css";
 import "./global.css";
 import { Sidebar } from "./components/Sidebar";
 
-
 const posts = [
   {
     id: 1,
@@ -30,7 +29,7 @@ const posts = [
         content: "jane.design/doctor",
       },
     ],
-    publishedAt: new Date("2002-05-03 20:00:00"),
+    publishedAt: new Date("2023-02-03 20:00:00"),
   },
   {
     id: 2,
@@ -55,7 +54,7 @@ const posts = [
         content: "jane.design/doctor",
       },
     ],
-    publishedAt: new Date("2002-05-03 20:00:00"),
+    publishedAt: new Date("2023-02-03 20:00:00"),
   },
 ];
 
